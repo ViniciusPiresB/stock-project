@@ -4,9 +4,9 @@ from django.urls import reverse_lazy
 
 class Produto(models.Model):
     importado = models.BooleanField(default=False)
-    ncm = models.CharField('preço de saida', max_length=8)
     produto = models.CharField(max_length=100, unique=True)
     preco = models.DecimalField('preço de custo', max_digits=7, decimal_places=2)
+    ncm = models.DecimalField('preço de saida', max_digits=7, decimal_places=2)
     estoque = models.IntegerField('estoque atual')
     estoque_minimo = models.PositiveIntegerField('estoque mínimo', default=0)
     data = models.DateField(null=True, blank=True)
