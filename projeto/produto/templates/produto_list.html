@@ -40,17 +40,24 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Importado</th>
           <th>Produto</th>
-          <th>Preço de custo</th>
+          <!-- <th>Preço de custo</th> -->
           <th>Preço de saida</th>
           <th class="text-center">Estoque</th>
           <th class="text-center">Estoque mínimo</th>
+          <th>Importado</th>
         </tr>
       </thead>
       <tbody>
         {% for object in object_list %}
           <tr>
+            <td>
+              <a href="{{ object.get_absolute_url }}">{{ object.produto }}</a>
+            </td>
+            <!-- <td>R$ <span class="text-center">{{ object.preco }}</span></td> -->
+            <td>R$ <span class="text-center">{{ object.ncm }}</span></td>
+            <td class="text-center">{{ object.estoque }}</td>
+            <td class="text-center">{{ object.estoque_minimo }}</td>
             <td>
               {% if object.importado %}
                 <i class="fa fa-check-circle ok"></i>
@@ -58,13 +65,6 @@
                 <i class="fa fa-minus-circle no"></i>
               {% endif %}
             </td>
-            <td>
-              <a href="{{ object.get_absolute_url }}">{{ object.produto }}</a>
-            </td>
-            <td>R$ <span class="text-center">{{ object.preco }}</span></td>
-            <td>R$ <span class="text-center">{{ object.ncm }}</span></td>
-            <td class="text-center">{{ object.estoque }}</td>
-            <td class="text-center">{{ object.estoque_minimo }}</td>
           </tr>
         {% endfor %}
       </tbody>
